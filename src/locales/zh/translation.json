@@ -1,0 +1,75 @@
+{
+  "app": {
+    "title": "后台管理系统",
+    "welcome": "欢迎！",
+    "description": "这个应用程序是一个后台管理工具。"
+  },
+  "auth": {
+    "login": "登录",
+    "logout": "退出",
+    "signup": "注册",
+    "forgotPassword": "忘记密码？",
+    "rememberMe": "记住我",
+    "loginPrompt": "输入您的账户信息进行登录",
+    "noAccount": "没有账户？",
+    "loginProcessing": "登录中...",
+    "loginSuccess": "登录成功。",
+    "loginFailed": "登录失败。",
+    "retry": "重试"
+  },
+  "form": {
+    "username": "用户名",
+    "password": "密码",
+    "confirmPassword": "确认密码",
+    "phoneNumber": "手机号码",
+    "submit": "提交",
+    "cancel": "取消",
+    "save": "保存",
+    "delete": "删除",
+    "search": "搜索",
+    "filter": "筛选",
+    "placeholders": {
+      "username": "请输入用户名",
+      "password": "请输入密码",
+      "search": "请输入搜索词"
+    }
+  },
+  "validation": {
+    "required": "请输入{{field}}。",
+    "minLength": "{{field}}至少需要{{count}}个字符。",
+    "maxLength": "{{field}}最多只能有{{count}}个字符。",
+    "passwordMismatch": "密码不一致。",
+    "invalidFormat": "格式无效。"
+  },
+  "nav": {
+    "home": "首页",
+    "users": "用户管理",
+    "settings": "设置",
+    "reports": "报表",
+    "dashboard": "仪表板"
+  },
+  "error": {
+    "general": "发生错误。",
+    "network": "网络错误。",
+    "unauthorized": "未授权访问。",
+    "notFound": "页面未找到。",
+    "serverError": "服务器错误。"
+  },
+  "common": {
+    "loading": "加载中...",
+    "success": "成功！",
+    "error": "错误！",
+    "warning": "警告！",
+    "info": "信息",
+    "yes": "是",
+    "no": "否",
+    "back": "返回",
+    "next": "下一步",
+    "close": "关闭"
+  },
+  "language": {
+    "ko": "韩语",
+    "en": "英语",
+    "zh": "中文"
+  }
+}
