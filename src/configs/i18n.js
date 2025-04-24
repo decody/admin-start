@@ -16,6 +16,9 @@ import "dayjs/locale/zh-cn";
 dayjs.extend(localizedFormat);
 dayjs.extend(relativeTime);
 
+// 기본 로케일 설정
+dayjs.locale("ko");
+
 i18n
   // 백엔드 로드 (언어 파일)
   .use(Backend)
@@ -64,9 +67,13 @@ i18n
       // 사용자 정의 포맷팅 함수
       format: (value, format, lng) => {
         if (value instanceof Date) {
-          // dayjs 로케일 설정
+          // dayjs 로케일 설정 - 이미 사용 중인 로케일과 다를 때만 변경
           const locale = lng === "zh" ? "zh-cn" : lng;
-          dayjs.locale(locale);
+
+          // Avoid unnecessary locale changes
+          if (dayjs.locale() !== locale) {
+            dayjs.locale(locale);
+          }
 
           if (format === "short") {
             return dayjs(value).format("L");
@@ -107,5 +114,11 @@ i18n
       },
     },
   });
+
+// 언어 변경 시 dayjs 로케일도 함께 변경
+i18n.on("languageChanged", (lng) => {
+  const locale = lng === "zh" ? "zh-cn" : lng;
+  dayjs.locale(locale);
+});
 
 export default i18n;

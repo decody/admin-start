@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
@@ -11,13 +11,29 @@ export default function Header() {
   const [username, setUsername] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // 인증 상태 확인
-  useEffect(() => {
-    checkAuthStatus();
-  }, [location.pathname]);
+  // API를 통해 사용자 정보 가져오기
+  const fetchUserInfo = useCallback(async (token) => {
+    try {
+      const response = await axios.get("/api/auth/me", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.data && response.data.user) {
+        setUsername(response.data.user.username || "사용자");
+      }
+    } catch (error) {
+      console.error("사용자 정보 조회 실패:", error);
+      // 토큰이 만료된 경우 로그아웃 처리
+      if (error.response && error.response.status === 401) {
+        handleLogout();
+      }
+    }
+  }, []);
 
   // 사용자 인증 상태 확인
-  const checkAuthStatus = () => {
+  const checkAuthStatus = useCallback(() => {
     const token = localStorage.getItem("accessToken");
     const userInfo = sessionStorage.getItem("user");
 
@@ -40,31 +56,15 @@ export default function Header() {
       setIsLoggedIn(false);
       setUsername("");
     }
-  };
+  }, [fetchUserInfo]);
 
-  // API를 통해 사용자 정보 가져오기
-  const fetchUserInfo = async (token) => {
-    try {
-      const response = await axios.get("/api/auth/me", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (response.data && response.data.user) {
-        setUsername(response.data.user.username || "사용자");
-      }
-    } catch (error) {
-      console.error("사용자 정보 조회 실패:", error);
-      // 토큰이 만료된 경우 로그아웃 처리
-      if (error.response && error.response.status === 401) {
-        handleLogout();
-      }
-    }
-  };
+  // 인증 상태 확인
+  useEffect(() => {
+    checkAuthStatus();
+  }, [location.pathname, checkAuthStatus]);
 
   // 로그아웃 처리
-  const handleLogout = async () => {
+  const handleLogout = useCallback(async () => {
     try {
       // 로그아웃 API 호출
       await axios.post("/api/auth/logout");
@@ -86,7 +86,7 @@ export default function Header() {
       // 홈페이지로 리다이렉트
       navigate("/");
     }
-  };
+  }, [navigate]);
 
   return (
     <header className="bg-white shadow-md">

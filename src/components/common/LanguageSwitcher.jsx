@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
 const LanguageSwitcher = () => {
   const { i18n, t } = useTranslation();
 
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-  };
+  const changeLanguage = useCallback(
+    (lng) => {
+      // Only change if the language is different
+      if (i18n.language !== lng) {
+        i18n.changeLanguage(lng);
+      }
+    },
+    [i18n]
+  );
 
   return (
     <div className="flex items-center gap-2">
@@ -44,4 +50,4 @@ const LanguageSwitcher = () => {
   );
 };
 
-export default LanguageSwitcher;
+export default React.memo(LanguageSwitcher);
