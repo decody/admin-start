@@ -1,0 +1,65 @@
+{
+  "menu": {
+    "home": "홈",
+    "dashboard": "대시보드",
+    "users": "사용자 관리",
+    "users.list": "사용자 목록",
+    "users.roles": "역할 관리",
+    "users.detail": "사용자 상세",
+    "settings": "설정",
+    "settings.general": "일반 설정",
+    "settings.notifications": "알림 설정"
+  },
+  "common": {
+    "save": "저장",
+    "cancel": "취소",
+    "delete": "삭제",
+    "edit": "수정",
+    "create": "생성",
+    "search": "검색",
+    "loading": "로딩 중...",
+    "noData": "데이터가 없습니다",
+    "confirm": "확인",
+    "success": "성공",
+    "error": "오류",
+    "warning": "경고",
+    "category": "카테고리",
+    "example": "예시"
+  },
+  "auth": {
+    "login": "로그인",
+    "logout": "로그아웃",
+    "register": "회원가입",
+    "forgotPassword": "비밀번호 찾기",
+    "username": "사용자 이름",
+    "password": "비밀번호",
+    "email": "이메일"
+  },
+  "validation": {
+    "required": "필수 항목입니다",
+    "invalidEmail": "유효하지 않은 이메일 형식입니다",
+    "minLength": "최소 {{min}}자 이상이어야 합니다",
+    "maxLength": "최대 {{max}}자까지 가능합니다",
+    "passwordMismatch": "비밀번호가 일치하지 않습니다"
+  },
+  "notifications": {
+    "success": "성공적으로 처리되었습니다",
+    "error": "오류가 발생했습니다",
+    "saveSuccess": "성공적으로 저장되었습니다",
+    "deleteSuccess": "성공적으로 삭제되었습니다",
+    "updateSuccess": "성공적으로 수정되었습니다"
+  },
+  "examples": {
+    "title": "다국어 지원 예제",
+    "menu": "메뉴 예시",
+    "buttons": "버튼 예시",
+    "auth": "인증 예시",
+    "validation": "유효성 검사 예시",
+    "dates": "날짜 표시 예시",
+    "numbers": "숫자 표시 예시",
+    "notifications": "알림 메시지 예시"
+  },
+  "date": "{{val, datetime}}",
+  "number": "{{val, number}}",
+  "currency": "{{val, currency}}"
+}

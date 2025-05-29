@@ -19,6 +19,97 @@ dayjs.extend(relativeTime);
 // 기본 로케일 설정
 dayjs.locale("ko");
 
+// 번역 리소스
+const resources = {
+  ko: {
+    translation: {
+      language: {
+        ko: "한국어",
+        en: "English",
+        zh: "中文",
+      },
+      menu: {
+        home: "홈",
+        dashboard: "대시보드",
+        users: "사용자 관리",
+        settings: "설정",
+      },
+      common: {
+        save: "저장",
+        cancel: "취소",
+        delete: "삭제",
+        category: "카테고리",
+        example: "예시",
+      },
+      examples: {
+        title: "다국어 지원 예제",
+        menu: "메뉴 예시",
+        buttons: "버튼 예시",
+        dates: "날짜 예시",
+        numbers: "숫자 예시",
+      },
+    },
+  },
+  en: {
+    translation: {
+      language: {
+        ko: "Korean",
+        en: "English",
+        zh: "Chinese",
+      },
+      menu: {
+        home: "Home",
+        dashboard: "Dashboard",
+        users: "User Management",
+        settings: "Settings",
+      },
+      common: {
+        save: "Save",
+        cancel: "Cancel",
+        delete: "Delete",
+        category: "Category",
+        example: "Example",
+      },
+      examples: {
+        title: "Internationalization Example",
+        menu: "Menu Examples",
+        buttons: "Button Examples",
+        dates: "Date Examples",
+        numbers: "Number Examples",
+      },
+    },
+  },
+  zh: {
+    translation: {
+      language: {
+        ko: "韩语",
+        en: "英语",
+        zh: "中文",
+      },
+      menu: {
+        home: "首页",
+        dashboard: "仪表板",
+        users: "用户管理",
+        settings: "设置",
+      },
+      common: {
+        save: "保存",
+        cancel: "取消",
+        delete: "删除",
+        category: "类别",
+        example: "示例",
+      },
+      examples: {
+        title: "国际化示例",
+        menu: "菜单示例",
+        buttons: "按钮示例",
+        dates: "日期示例",
+        numbers: "数字示例",
+      },
+    },
+  },
+};
+
 i18n
   // 백엔드 로드 (언어 파일)
   .use(Backend)
@@ -28,75 +119,38 @@ i18n
   .use(initReactI18next)
   // i18n 초기화
   .init({
-    // 기본 언어
+    resources,
     fallbackLng: "ko",
-
-    // 지원하는 언어 목록
-    supportedLngs: ["ko", "en", "zh"],
-
-    // 감지 옵션
-    detection: {
-      order: ["localStorage", "cookie", "navigator"],
-      caches: ["localStorage", "cookie"],
-    },
-
-    // 백엔드 옵션
-    backend: {
-      // 언어 파일 경로
-      loadPath: "/locales/{{lng}}/{{ns}}.json",
-    },
-
-    // 네임스페이스
-    ns: ["translation"],
-    defaultNS: "translation",
-
-    // 디버그 모드 (개발 환경에서만 활성화)
     debug: process.env.NODE_ENV === "development",
 
-    // 언어 간 키 누락 감지
-    keySeparator: ".",
-
-    // React 옵션
-    react: {
-      useSuspense: true,
-    },
-
-    // 보간 옵션
     interpolation: {
-      escapeValue: false, // React에서는 이미 XSS 방지됨
-      // 사용자 정의 포맷팅 함수
+      escapeValue: false,
       format: (value, format, lng) => {
         if (value instanceof Date) {
-          // dayjs 로케일 설정 - 이미 사용 중인 로케일과 다를 때만 변경
           const locale = lng === "zh" ? "zh-cn" : lng;
 
-          // Avoid unnecessary locale changes
           if (dayjs.locale() !== locale) {
             dayjs.locale(locale);
           }
 
-          if (format === "short") {
-            return dayjs(value).format("L");
+          switch (format) {
+            case "short":
+              return dayjs(value).format("L");
+            case "long":
+              return dayjs(value).format("LLLL");
+            case "relative":
+              return dayjs(value).fromNow();
+            case "ago":
+              return dayjs(value).fromNow();
+            default:
+              return dayjs(value).format(format);
           }
-          if (format === "long") {
-            return dayjs(value).format("LLLL");
-          }
-          if (format === "relative") {
-            return dayjs(value).format("YYYY년 MMMM D일 dddd A h시 mm분");
-          }
-          if (format === "ago") {
-            return dayjs(value).fromNow();
-          }
-
-          return dayjs(value).format(format);
         }
 
-        // 숫자 포맷팅
         if (format === "number" && typeof value === "number") {
           return new Intl.NumberFormat(lng).format(value);
         }
 
-        // 통화 포맷팅
         if (format === "currency" && typeof value === "number") {
           const currencyMap = {
             ko: "KRW",

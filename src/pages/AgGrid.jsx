@@ -8,10 +8,8 @@ import React, {
 import { createRoot } from "react-dom/client";
 import { AgGridReact } from "ag-grid-react"; // the AG Grid React Component
 import { DatePicker } from "antd";
-// import "antd/dist/antd.css";
-
-// import "ag-grid-community/styles/ag-grid.css"; // Core grid CSS, always needed
-// import "ag-grid-community/styles/ag-theme-alpine.css"; // Optional theme CSS
+import "ag-grid-community/styles/ag-grid.css"; // Core grid CSS, always needed
+import "ag-grid-community/styles/ag-theme-alpine.css"; // Optional theme CSS
 
 export default function AgGrid() {
   const gridRef = useRef(); // Optional - for accessing Grid's API
@@ -55,7 +53,10 @@ export default function AgGrid() {
       <button onClick={buttonListener}>Push Me</button>
 
       {/* On div wrapping Grid a) specify theme CSS Class Class and b) sets Grid size */}
-      <div className="ag-theme-alpine" style={{ width: 800, height: 500 }}>
+      <div
+        className="ag-theme-alpine"
+        style={{ width: 800, height: 500, border: "1px solid red" }}
+      >
         <AgGridReact
           ref={gridRef} // Ref for accessing Grid's API
           rowData={rowData} // Row Data for Rows

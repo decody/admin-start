@@ -131,6 +131,12 @@ export default function Header() {
               >
                 컨텐츠
               </Link>
+              <Link
+                to="/i18n-example"
+                className="rounded-md px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100"
+              >
+                다국어
+              </Link>
             </nav>
           </div>
 

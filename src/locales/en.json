@@ -1,0 +1,65 @@
+{
+  "menu": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "users": "User Management",
+    "users.list": "User List",
+    "users.roles": "Role Management",
+    "users.detail": "User Detail",
+    "settings": "Settings",
+    "settings.general": "General Settings",
+    "settings.notifications": "Notification Settings"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "search": "Search",
+    "loading": "Loading...",
+    "noData": "No data available",
+    "confirm": "Confirm",
+    "success": "Success",
+    "error": "Error",
+    "warning": "Warning",
+    "category": "Category",
+    "example": "Example"
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "forgotPassword": "Forgot Password",
+    "username": "Username",
+    "password": "Password",
+    "email": "Email"
+  },
+  "validation": {
+    "required": "This field is required",
+    "invalidEmail": "Invalid email format",
+    "minLength": "Must be at least {{min}} characters",
+    "maxLength": "Must be no more than {{max}} characters",
+    "passwordMismatch": "Passwords do not match"
+  },
+  "notifications": {
+    "success": "Operation completed successfully",
+    "error": "An error occurred",
+    "saveSuccess": "Saved successfully",
+    "deleteSuccess": "Deleted successfully",
+    "updateSuccess": "Updated successfully"
+  },
+  "examples": {
+    "title": "Internationalization Example",
+    "menu": "Menu Examples",
+    "buttons": "Button Examples",
+    "auth": "Authentication Examples",
+    "validation": "Validation Examples",
+    "dates": "Date Format Examples",
+    "numbers": "Number Format Examples",
+    "notifications": "Notification Examples"
+  },
+  "date": "{{val, datetime}}",
+  "number": "{{val, number}}",
+  "currency": "{{val, currency}}"
+}

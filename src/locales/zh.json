@@ -1,0 +1,65 @@
+{
+  "menu": {
+    "home": "首页",
+    "dashboard": "仪表板",
+    "users": "用户管理",
+    "users.list": "用户列表",
+    "users.roles": "角色管理",
+    "users.detail": "用户详情",
+    "settings": "设置",
+    "settings.general": "常规设置",
+    "settings.notifications": "通知设置"
+  },
+  "common": {
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "edit": "编辑",
+    "create": "创建",
+    "search": "搜索",
+    "loading": "加载中...",
+    "noData": "暂无数据",
+    "confirm": "确认",
+    "success": "成功",
+    "error": "错误",
+    "warning": "警告",
+    "category": "类别",
+    "example": "示例"
+  },
+  "auth": {
+    "login": "登录",
+    "logout": "退出",
+    "register": "注册",
+    "forgotPassword": "忘记密码",
+    "username": "用户名",
+    "password": "密码",
+    "email": "电子邮箱"
+  },
+  "validation": {
+    "required": "此项为必填项",
+    "invalidEmail": "无效的邮箱格式",
+    "minLength": "最少需要 {{min}} 个字符",
+    "maxLength": "最多允许 {{max}} 个字符",
+    "passwordMismatch": "密码不匹配"
+  },
+  "notifications": {
+    "success": "操作成功完成",
+    "error": "发生错误",
+    "saveSuccess": "保存成功",
+    "deleteSuccess": "删除成功",
+    "updateSuccess": "更新成功"
+  },
+  "examples": {
+    "title": "国际化示例",
+    "menu": "菜单示例",
+    "buttons": "按钮示例",
+    "auth": "认证示例",
+    "validation": "验证示例",
+    "dates": "日期格式示例",
+    "numbers": "数字格式示例",
+    "notifications": "通知消息示例"
+  },
+  "date": "{{val, datetime}}",
+  "number": "{{val, number}}",
+  "currency": "{{val, currency}}"
+}

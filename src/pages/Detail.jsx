@@ -5,82 +5,85 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 am4core.useTheme(am4themes_animated);
 
+const convertToTimestamp = (year, month, day) =>
+  new Date(year, month, day).getTime();
+
 const initialProjectData = [
   {
     id: "FID 2423213",
     status: "In progress",
-    startDate: new Date(2025, 0, 15).getTime(), // January 15, 2025
-    endDate: new Date(2025, 5, 20).getTime(), // June 20, 2025
+    startDate: convertToTimestamp(2025, 0, 15), // January 15, 2025
+    endDate: convertToTimestamp(2025, 5, 20), // June 20, 2025
     progress: 58,
   },
   {
     id: "FID 2423214",
     status: "In progress",
-    startDate: new Date(2025, 1, 10).getTime(), // February 10, 2025
-    endDate: new Date(2025, 7, 25).getTime(), // August 25, 2025
+    startDate: convertToTimestamp(2025, 1, 10), // February 10, 2025
+    endDate: convertToTimestamp(2025, 7, 25), // August 25, 2025
     progress: 32,
   },
   {
     id: "FID 2423215",
     status: "In progress",
-    startDate: new Date(2025, 2, 5).getTime(), // March 5, 2025
-    endDate: new Date(2025, 6, 15).getTime(), // July 15, 2025
+    startDate: convertToTimestamp(2025, 2, 5), // March 5, 2025
+    endDate: convertToTimestamp(2025, 6, 15), // July 15, 2025
     progress: 34,
   },
   {
     id: "FID 2423216",
     status: "Complete",
-    startDate: new Date(2025, 1, 20).getTime(), // February 20, 2025
-    endDate: new Date(2025, 4, 10).getTime(), // May 10, 2025
+    startDate: convertToTimestamp(2025, 1, 20), // February 20, 2025
+    endDate: convertToTimestamp(2025, 4, 10), // May 10, 2025
     progress: 100,
   },
   {
     id: "FID 2423217",
     status: "Delay",
-    startDate: new Date(2025, 4, 15).getTime(), // May 15, 2025
-    endDate: new Date(2025, 11, 5).getTime(), // December 5, 2025
+    startDate: convertToTimestamp(2025, 4, 15), // May 15, 2025
+    endDate: convertToTimestamp(2025, 11, 5), // December 5, 2025
     progress: 54,
   },
   {
     id: "FID 2423218",
     status: "Delay",
-    startDate: new Date(2025, 0, 25).getTime(), // January 25, 2025
-    endDate: new Date(2025, 3, 20).getTime(), // April 20, 2025
+    startDate: convertToTimestamp(2025, 0, 25), // January 25, 2025
+    endDate: convertToTimestamp(2025, 3, 20), // April 20, 2025
     progress: 72,
   },
   {
     id: "FID 2423219",
     status: "In progress",
-    startDate: new Date(2025, 3, 10).getTime(), // April 10, 2025
-    endDate: new Date(2025, 8, 30).getTime(), // September 30, 2025
+    startDate: convertToTimestamp(2025, 3, 10), // April 10, 2025
+    endDate: convertToTimestamp(2025, 8, 30), // September 30, 2025
     progress: 45,
   },
   {
     id: "FID 2423220",
     status: "Complete",
-    startDate: new Date(2025, 2, 15).getTime(), // March 15, 2025
-    endDate: new Date(2025, 5, 25).getTime(), // June 25, 2025
+    startDate: convertToTimestamp(2025, 2, 15), // March 15, 2025
+    endDate: convertToTimestamp(2025, 5, 25), // June 25, 2025
     progress: 100,
   },
   {
     id: "FID 2423221",
     status: "Delay",
-    startDate: new Date(2025, 5, 5).getTime(), // June 5, 2025
-    endDate: new Date(2025, 9, 15).getTime(), // October 15, 2025
+    startDate: convertToTimestamp(2025, 5, 5), // June 5, 2025
+    endDate: convertToTimestamp(2025, 9, 15), // October 15, 2025
     progress: 60,
   },
   {
     id: "FID 2423222",
     status: "In progress",
-    startDate: new Date(2025, 4, 20).getTime(), // May 20, 2025
-    endDate: new Date(2025, 10, 10).getTime(), // November 10, 2025
+    startDate: convertToTimestamp(2025, 4, 20), // May 20, 2025
+    endDate: convertToTimestamp(2025, 10, 10), // November 10, 2025
     progress: 50,
   },
   {
     id: "FID 2423223",
     status: "Complete",
-    startDate: new Date(2025, 0, 30).getTime(), // January 30, 2025
-    endDate: new Date(2025, 2, 20).getTime(), // March 20, 2025
+    startDate: convertToTimestamp(2025, 0, 30), // January 30, 2025
+    endDate: convertToTimestamp(2025, 2, 20), // March 20, 2025
     progress: 100,
   },
 ];
