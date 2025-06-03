@@ -200,7 +200,7 @@ export default function FormTableExample() {
       </div>
 
       {showTable && (
-        <div className="bg-white p-4 rounded shadow">
+        <div className="bg-white p-4 rounded shadow  max-w-[1200px] mx-auto">
           <FormTable
             columns={columns}
             data={data}

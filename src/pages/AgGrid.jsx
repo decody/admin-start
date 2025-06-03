@@ -7,13 +7,35 @@ import React, {
 } from "react";
 import { createRoot } from "react-dom/client";
 import { AgGridReact } from "ag-grid-react"; // the AG Grid React Component
-import { DatePicker } from "antd";
+import { Input } from "antd";
 import "ag-grid-community/styles/ag-grid.css"; // Core grid CSS, always needed
 import "ag-grid-community/styles/ag-theme-alpine.css"; // Optional theme CSS
+import { gridData } from "../mocks/gridData";
+
+// 디바운스 커스텀 훅
+const useDebounce = (value, delay) => {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+};
 
 export default function AgGrid() {
   const gridRef = useRef(); // Optional - for accessing Grid's API
-  const [rowData, setRowData] = useState(); // Set rowData to Array of Objects, one Object per Row
+  const [rowData, setRowData] = useState([]); // Set rowData to Array of Objects, one Object per Row
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // 300ms 디바운스 적용
+  const debouncedSearchTerm = useDebounce(searchTerm, 300);
 
   // Each Column Definition results in one Column.
   const [columnDefs, setColumnDefs] = useState([
@@ -34,9 +56,7 @@ export default function AgGrid() {
 
   // Example load data from server
   useEffect(() => {
-    fetch("https://www.ag-grid.com/example-assets/row-data.json")
-      .then((result) => result.json())
-      .then((rowData) => setRowData(rowData));
+    setRowData(gridData);
   }, []);
 
   // Example using Grid's API
@@ -44,10 +64,48 @@ export default function AgGrid() {
     gridRef.current.api.deselectAll();
   }, []);
 
+  // 검색 로직을 별도의 함수로 분리
+  const performSearch = useCallback((searchValue) => {
+    if (!searchValue.trim()) {
+      setRowData(gridData);
+      return;
+    }
+
+    const filteredData = gridData.filter((item) =>
+      Object.values(item).some(
+        (val) =>
+          val.toString().toLowerCase().indexOf(searchValue.toLowerCase()) !== -1
+      )
+    );
+    setRowData(filteredData);
+  }, []);
+
+  // 디바운스된 검색어가 변경될 때마다 검색 수행
+  useEffect(() => {
+    performSearch(debouncedSearchTerm);
+  }, [debouncedSearchTerm, performSearch]);
+
+  // Input.Search의 onChange 핸들러
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  // Enter 키 입력 핸들러
+  const handlePressEnter = () => {
+    performSearch(searchTerm);
+  };
+
   return (
     <div>
       <div>
-        <DatePicker />
+        <Input.Search
+          placeholder="검색어를 입력하세요"
+          onChange={handleSearchChange}
+          onPressEnter={handlePressEnter}
+          onSearch={handlePressEnter}
+          value={searchTerm}
+          style={{ width: 300, marginBottom: 16 }}
+        />
       </div>
       {/* Example using Grid's API */}
       <button onClick={buttonListener}>Push Me</button>

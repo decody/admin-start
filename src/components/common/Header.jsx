@@ -89,81 +89,26 @@ export default function Header() {
   }, [navigate]);
 
   return (
-    <header className="bg-white shadow-md">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <div className="flex items-center">
-            <h1 className="flex-shrink-0">
-              <Link to="/">
-                <img src="" className="h-8 w-auto app-logo" alt="로고" />
-              </Link>
-            </h1>
-            <nav className="ml-10 flex space-x-4 app-nav">
-              <Link
-                to="/"
-                className="rounded-md px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100"
-              >
-                Home
-              </Link>
-              {!isLoggedIn && (
-                <Link
-                  to="/signup"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100"
-                >
-                  회원가입
-                </Link>
-              )}
-              <Link
-                to="/grid"
-                className="rounded-md px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100"
-              >
-                AgGrid 예제
-              </Link>
-              <Link
-                to="/detail"
-                className="rounded-md px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100"
-              >
-                상세보기
-              </Link>
-              <Link
-                to="/content"
-                className="rounded-md px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100"
-              >
-                컨텐츠
-              </Link>
-              <Link
-                to="/i18n-example"
-                className="rounded-md px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100"
-              >
-                다국어
-              </Link>
-            </nav>
-          </div>
-
-          <div className="flex items-center">
-            {/* 언어 선택기 추가 */}
+    <header>
+      <div>
+        <div>
+          <h1>
+            <Link to="/">
+              <img src="" className="app-logo" alt="로고" />
+            </Link>
+          </h1>
+          <div>
             <LanguageSwitcher />
-            <div className="mx-4 h-6 w-px bg-gray-200"></div>
+            <div></div>
             {isLoggedIn ? (
               <>
-                <span className="mr-4 text-sm font-medium text-gray-700">
-                  <span className="text-gray-500">안녕하세요,</span> {username}
-                  님
+                <span>
+                  <span>안녕하세요,</span> {username}님
                 </span>
-                <button
-                  onClick={handleLogout}
-                  className="rounded-md bg-red-50 px-3 py-2 text-sm font-medium text-red-700 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
-                >
-                  로그아웃
-                </button>
+                <button onClick={handleLogout}>로그아웃</button>
               </>
             ) : (
-              <Link
-                to="/signin"
-                className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-medium text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-              >
-                로그인
-              </Link>
+              <Link to="/signin">로그인</Link>
             )}
           </div>
         </div>

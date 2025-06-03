@@ -1,0 +1,64 @@
+/* Form container styles */
+.form-container {
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* Table container styles */
+.table-container {
+  background-color: white;
+  max-width: 1200px;
+  margin: 0 auto;
+  border: 1px solid #e5e7eb;
+}
+
+.form-table {
+  width: 100%;
+}
+
+/* Form group styles */
+.inline-form-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.radio-group-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.resale-options {
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.no-margin {
+  margin-bottom: 0;
+}
+
+/* Button group styles */
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
